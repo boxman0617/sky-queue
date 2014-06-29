@@ -10,15 +10,6 @@ class SkyQueue
 		$this->_queue = $queue_name;
 	}
 
-	public function __call($name, $args = array())
-	{
-		if(method_exists('SkyQueue', $name))
-		{
-			array_unshift($args, $this->_queue);
-			return call_user_func_array(array('SkyQueue', $name), $args);
-		}
-	}
-
 	private static function ReadQueueFile()
 	{
 		return json_decode(file_get_contents(Plugin::GetLocalPluginDir('sky-queue').'/'.self::$QueueFile), true);
@@ -29,31 +20,31 @@ class SkyQueue
 		file_put_contents(Plugin::GetLocalPluginDir('sky-queue').'/'.self::$QueueFile, json_encode($json));
 	}
 
-	public static function Append($queue_name, $item)
+	public function Append($item)
 	{
 		$json = self::ReadQueueFile();
-		$json[$queue_name][] = $item;
+		$json[$this->_queue][] = $item;
 		self::WriteQueueFile($json);
 	}
 
-	public static function Next($queue_name)
+	public function Next()
 	{
 		$json = self::ReadQueueFile();
-		$next = array_shift($json[$queue_name]);
+		$next = array_shift($json[$this->_queue]);
 		self::WriteQueueFile($json);
 		return $next;
 	}
 
-	public static function Count($queue_name)
+	public function Count()
 	{
 		$json = self::ReadQueueFile();
-		return count($json[$queue_name]);
+		return count($json[$this->_queue]);
 	}
 
-	public static function Clear($queue_name)
+	public function Clear()
 	{
 		$json = self::ReadQueueFile();
-		$json[$queue_name] = array();
+		$json[$this->_queue] = array();
 		self::WriteQueueFile($json);
 	}
 }

@@ -1,7 +1,7 @@
 {
 	"name": "sky-queue",
 	"description": "SKY's queue plugin",
-	"version": "0.0.1",
+	"version": "0.0.6",
 	"keywords": ["sky", "queue"],
 	"bugs": {
 		"url": "https://github.com/boxman0617/sky-queue/issues",
@@ -15,7 +15,9 @@
 			"url": "http://deeplogik.com"
 		}
 	],
+  "onUse": "install_queue.php",
   "localInstall": "install",
+  "onLoad": "import.php",
 	"file": "SkyQueue.plugin.php",
   "getID": "SkyQueue",
 	"repos": [
