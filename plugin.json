@@ -1,0 +1,26 @@
+{
+	"name": "sky-queue",
+	"description": "SKY's queue plugin",
+	"version": "0.0.1",
+	"keywords": ["sky", "queue"],
+	"bugs": {
+		"url": "https://github.com/boxman0617/sky-queue/issues",
+		"email": "alan@deeplogik.com"
+	},
+	"license": "MIT",
+	"creators": [
+		{
+			"name": "Alan Tirado",
+			"email": "alan@deeplogik.com",
+			"url": "http://deeplogik.com"
+		}
+	],
+  "localInstall": "install",
+	"file": "SkyQueue.plugin.php",
+  "getID": "SkyQueue",
+	"repos": [
+		{"git": "https://github.com/boxman0617/sky-queue.git"}
+	],
+	"phpVersion": ">=5.0.0",
+  "SKYVersion": ">=1.0.0"
+}
